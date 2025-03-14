@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "featured_projects",
+  "info": {
+    "singularName": "featured-project",
+    "pluralName": "featured-projects",
+    "displayName": "featuredProject"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project"
+    }
+  }
+}
