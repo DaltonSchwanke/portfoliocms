@@ -493,6 +493,63 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFeaturedBlogFeaturedBlog extends Struct.SingleTypeSchema {
+  collectionName: 'featured_blogs';
+  info: {
+    displayName: 'featuredBlog';
+    pluralName: 'featured-blogs';
+    singularName: 'featured-blog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::featured-blog.featured-blog'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFeaturedProjectFeaturedProject
+  extends Struct.SingleTypeSchema {
+  collectionName: 'featured_projects';
+  info: {
+    displayName: 'featuredProject';
+    pluralName: 'featured-projects';
+    singularName: 'featured-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::featured-project.featured-project'
+    > &
+      Schema.Attribute.Private;
+    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiIntroIntro extends Struct.SingleTypeSchema {
   collectionName: 'intros';
   info: {
@@ -1102,6 +1159,8 @@ declare module '@strapi/strapi' {
       'api::contact.contact': ApiContactContact;
       'api::education.education': ApiEducationEducation;
       'api::experience.experience': ApiExperienceExperience;
+      'api::featured-blog.featured-blog': ApiFeaturedBlogFeaturedBlog;
+      'api::featured-project.featured-project': ApiFeaturedProjectFeaturedProject;
       'api::intro.intro': ApiIntroIntro;
       'api::project.project': ApiProjectProject;
       'api::sidebar.sidebar': ApiSidebarSidebar;
