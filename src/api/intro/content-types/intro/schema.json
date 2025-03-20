@@ -4,7 +4,8 @@
   "info": {
     "singularName": "intro",
     "pluralName": "intros",
-    "displayName": "intro"
+    "displayName": "intro",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,35 +17,8 @@
     "message": {
       "type": "text"
     },
-    "icon1": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
-    "icon2": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
-    "icon3": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "name": {
+      "type": "string"
     }
   }
 }
