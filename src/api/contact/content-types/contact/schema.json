@@ -11,28 +11,8 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "phone": {
-      "type": "biginteger"
-    },
     "email": {
       "type": "email"
-    },
-    "linkedin": {
-      "type": "string"
-    },
-    "resume": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "github": {
-      "type": "string"
     }
   }
 }
