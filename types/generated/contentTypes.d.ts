@@ -403,6 +403,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
 export interface ApiContactContact extends Struct.SingleTypeSchema {
   collectionName: 'contacts';
   info: {
+    description: '';
     displayName: 'contact';
     pluralName: 'contacts';
     singularName: 'contact';
@@ -415,6 +416,8 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.Email;
+    github: Schema.Attribute.String;
+    linkedin: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -423,6 +426,10 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     phone: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
+    resume: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -495,66 +502,10 @@ export interface ApiExperienceExperience extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFeaturedBlogFeaturedBlog extends Struct.SingleTypeSchema {
-  collectionName: 'featured_blogs';
-  info: {
-    displayName: 'featuredBlog';
-    pluralName: 'featured-blogs';
-    singularName: 'featured-blog';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    blogs: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::featured-blog.featured-blog'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiFeaturedProjectFeaturedProject
-  extends Struct.SingleTypeSchema {
-  collectionName: 'featured_projects';
-  info: {
-    displayName: 'featuredProject';
-    pluralName: 'featured-projects';
-    singularName: 'featured-project';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::featured-project.featured-project'
-    > &
-      Schema.Attribute.Private;
-    projects: Schema.Attribute.Relation<'oneToMany', 'api::project.project'>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiIntroIntro extends Struct.SingleTypeSchema {
   collectionName: 'intros';
   info: {
+    description: '';
     displayName: 'intro';
     pluralName: 'intros';
     singularName: 'intro';
@@ -566,13 +517,11 @@ export interface ApiIntroIntro extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    icon1: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    icon2: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    icon3: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::intro.intro'> &
       Schema.Attribute.Private;
     message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -609,39 +558,6 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiSidebarSidebar extends Struct.SingleTypeSchema {
-  collectionName: 'sidebars';
-  info: {
-    displayName: 'sidebar';
-    pluralName: 'sidebars';
-    singularName: 'sidebar';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    github: Schema.Attribute.String;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    instagram: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::sidebar.sidebar'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    twitter: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1161,11 +1077,8 @@ declare module '@strapi/strapi' {
       'api::contact.contact': ApiContactContact;
       'api::education.education': ApiEducationEducation;
       'api::experience.experience': ApiExperienceExperience;
-      'api::featured-blog.featured-blog': ApiFeaturedBlogFeaturedBlog;
-      'api::featured-project.featured-project': ApiFeaturedProjectFeaturedProject;
       'api::intro.intro': ApiIntroIntro;
       'api::project.project': ApiProjectProject;
-      'api::sidebar.sidebar': ApiSidebarSidebar;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
