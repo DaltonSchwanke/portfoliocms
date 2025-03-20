@@ -35,6 +35,9 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "summary": {
+      "type": "text"
     }
   }
 }
