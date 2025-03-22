@@ -4,29 +4,35 @@
   "info": {
     "singularName": "education",
     "pluralName": "educations",
-    "displayName": "education"
+    "displayName": "education",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "school": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "degree": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "startDate": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "endDate": {
       "type": "date"
     },
     "link": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

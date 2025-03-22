@@ -4,24 +4,27 @@
   "info": {
     "singularName": "sidebar",
     "pluralName": "sidebars",
-    "displayName": "sidebar"
+    "displayName": "sidebar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "linkedin": {
       "type": "string"
@@ -33,14 +36,15 @@
       "type": "email"
     },
     "resume": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     }
   }
 }

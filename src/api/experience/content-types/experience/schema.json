@@ -4,29 +4,36 @@
   "info": {
     "singularName": "experience",
     "pluralName": "experiences",
-    "displayName": "experience"
+    "displayName": "experience",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "company": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "position": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "link": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "startDate": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "endDate": {
-      "type": "date"
+      "type": "date",
+      "required": true
     }
   }
 }
