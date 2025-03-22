@@ -12,13 +12,12 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "message": {
-      "type": "text"
-    },
-    "name": {
-      "type": "string"
+      "type": "text",
+      "required": true
     }
   }
 }

@@ -12,7 +12,8 @@
   },
   "attributes": {
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true
     }
   }
 }

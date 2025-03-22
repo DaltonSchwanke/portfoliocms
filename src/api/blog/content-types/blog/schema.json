@@ -12,10 +12,12 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "text": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "image": {
       "type": "media",
@@ -29,7 +31,8 @@
       ]
     },
     "date": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "slug": {
       "type": "uid",
@@ -37,7 +40,8 @@
       "required": true
     },
     "summary": {
-      "type": "text"
+      "type": "text",
+      "required": true
     }
   }
 }
