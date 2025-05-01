@@ -41,7 +41,8 @@
     },
     "summary": {
       "type": "text",
-      "required": true
+      "required": true,
+      "maxLength": 300
     }
   }
 }
